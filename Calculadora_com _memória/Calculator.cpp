@@ -1,4 +1,4 @@
-#include "Calculator.h"
+#include "include/Calculator.h"
 
 Calculator::Calculator()
 {
@@ -19,23 +19,19 @@ void Calculator::Calculate()
 void Calculator::saveMemory() const
 {
 	std::ofstream file("memory.txt", std::ios::app);
-	if (file.is_open()) {
+	if (file.is_open())
 		file << value1 << " " << calculusOperator << " " << value2 << " = " << result << std::endl;
-		file.close();
-	}
-	else {
-		std::cout << "unable to open file" << std::endl;
-	}
-	
+	else 
+		std::cerr << "unable to open file" << std::endl;
+	file.close();
 }
-
-
 
 void Calculator::showMemory()
 {
 	std::fstream file("memory.txt");
 	if (file.is_open())
 	{
+		std::cout << "\n";
 		std::string line;
 		while (std::getline(file, line)) {
 
@@ -43,11 +39,21 @@ void Calculator::showMemory()
 
 			std::cout << line << std::endl;
 		}
-		file.close();
 	}
-	else {
-		std::cout << "unable to open file" << std::endl;
-	}
+	else
+		std::cerr << "unable to open file" << std::endl;
+
+	file.close();
+}
+
+void Calculator::cleanMemory()
+{
+	std::ofstream file("memory.txt", std::ios::out | std::ios::trunc);
+	if (file.is_open())
+		std::cout << "Memory cleaned!" << std::endl;
+	else
+		std::cerr << "unable to open file" << std::endl;
+	file.close();
 }
 
 std::istream& operator>>(std::istream& in, Calculator& c)
@@ -60,6 +66,5 @@ std::istream& operator>>(std::istream& in, Calculator& c)
 std::ostream& operator<<(std::ostream& out, const Calculator& c)
 {
 	out << c.value1 << " " << c.calculusOperator << " " << c.value2 << " = " << c.result;
-	c.saveMemory();
 	return out;
 }
