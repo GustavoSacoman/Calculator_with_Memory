@@ -5,14 +5,11 @@
 
 int main() {
 
+	char option;
 	std::cout << "Do you wish start the calculator? (y/n): ";
+	std::cin >> option;
 
-	char* option = new char;
-
-	std::cin >> *option;
-
-	if (*option == 'y') {
-		delete option;
+	if (option == 'y') {
 		start();
 	}
 	else
