@@ -4,12 +4,9 @@
 Calculator calculator;
 void start() {
 	
-	
 	int option{};
 	do
 	{
-		//std::cout << "Sum - Subtract" << std::endl;
-		//std::cout << "Multiply - Divide" << std::endl;
 		options(option);
 		verify(option);
 		
@@ -51,10 +48,21 @@ void verify(int& option) {
 }
 
 void operation() {
-
+	try
+	{
+	std::cout << "\nSum - Subtract";
+	std::cout << "\nMultiply - Divide\n";
 	std::cout << "Enter the values and the operator (x + x)\n";
 	std::cout << ">> ";
 	std::cin >> calculator;
 	std::cout << calculator;
 	calculator.saveMemory();
+	}
+	catch (const std::exception&)
+	{
+		std::cerr << "Invalid values\n";
+		std::cin.clear();
+		std::cin.ignore(32767, '\n');
+		
+	}
 }

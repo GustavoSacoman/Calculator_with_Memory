@@ -2,11 +2,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdexcept>
 class Calculator
 {
 private:
-	int id;
-	int value1, value2;
+	int quantity_values;
+	double value1, value2;
 	char calculusOperator;
 	double result;
 
@@ -15,7 +16,7 @@ public:
 	Calculator();
 	~Calculator();
 	void Calculate();
-	void saveMemory() const;
+	void saveMemory();
 	void showMemory();
 	void cleanMemory();
 
