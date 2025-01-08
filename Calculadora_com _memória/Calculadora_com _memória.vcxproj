@@ -132,7 +132,7 @@
     <ClInclude Include="include\System.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="Entities\Calculator.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="view\System.cpp" />
   </ItemGroup>
